@@ -18,7 +18,7 @@ v...<
 .                       - add the second register onto the third
 .
 .    Test the first register here
-.    |              Print the third register (the result)
+.    |              Print the third register (the result) and exit
 .    |              |
 .    v              v
 >.[.\............]]dx
