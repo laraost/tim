@@ -1,0 +1,17 @@
+v This program goes loops 6 times and prints numbers.
++       1
++
++
++
++       5
++
+>.....>............d.............-...\x
+      . I can write comments         .
+      . wherever I want. As long as  .
+      . the program pointer doesn't  .
+      . move into the text, there    .
+      . won't be any problems.       .
+      . Even then, you might not even.
+      . notice. Symbols without meaning
+      ^.are < ignored. v.............<
+            ^..........<

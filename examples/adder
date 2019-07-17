@@ -1,0 +1,20 @@
+v This program writes two numbers into the first two registers, and adds the number in the 2nd register to the number in the 1st register.
+. The first number can be negative. If the second number is negative, the program enters an infinite loop
+.
+. Write 5 into the first register
+>+++++v
+v.....<
+] Write 6 into the second register
+>++++++v
+v......<
+.
+[ Go back to the first register
+.
+.
+.         vvvvv Here, we test if the second register is zero. If it is zero, stop the loop.
+>.....>...]...\....v
+      .       .    >........[dx      Go back to the first register and print the value
+      .       - Decrement the second register
+      .       [ Go to the first register
+      .       + Increment the first register
+      ^.......<
