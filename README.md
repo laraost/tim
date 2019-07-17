@@ -17,10 +17,10 @@ v...<
 .                       - decrement the first register
 .                       - add the second register onto the third
 .
-.    Test the first register here
-.    |              Print the third register (the result) and exit
-.    |              |
-.    v              v
+.   Test the first register here
+.   |            Print the third register (the result) and exit
+.   |            |
+.   v            v
 >.[.\............]]dx
 .   -
 .   >].>.\.]].>.\.[[.v
