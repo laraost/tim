@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 """
 Read a code-matrix from a file, start at the top left and interpret the symbols:
