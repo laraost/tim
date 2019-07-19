@@ -1,10 +1,5 @@
-v This program goes loops 6 times and prints numbers.
-+       1
-+
-+
-+
-+       5
-+
+v This program decrements and prints the first register until it is zero.
+.
 >.....>............d.............-...\x
       . I can write comments         .
       . wherever I want. As long as  .
