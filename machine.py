@@ -19,6 +19,7 @@ matrix = []
 if len(sys.argv) < 2:
     print("Usage: machine.py FILE [registers]")
     print("'registers' (optional) is the number of registers. Default is 100.")
+    print("The initial content of registers is read from standard input. If no value is provided the registers are initialized with 0.")
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as inputfile:
@@ -35,6 +36,14 @@ else:
     numberofregisters = 100
 
 registers = [0]*numberofregisters
+
+regptr = 0
+for line in sys.stdin:
+    line = line.strip();
+    for x in line.split(" "):
+        registers[regptr] = int(x)
+        regptr = regptr + 1    
+
 regptr = 0
 row = 0
 col = 0
