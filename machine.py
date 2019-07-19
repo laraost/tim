@@ -57,7 +57,7 @@ col = 0
 
 # direction of motion (row, col)
 # we start by moving right
-motion_dir = (1, 0)
+motion_dir = (0, 1)
 
 done = False
 while not done:
