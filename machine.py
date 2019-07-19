@@ -6,7 +6,14 @@ Read a code-matrix from a file, start at the top left and interpret the symbols:
 +, -:       increment the current register
 .:          do nothing
 [,]:        move the register pointer left, right; wraps around if the pointer moves past the first or last register
-/,\:        change the direction of motion if the value of the current register is non-zero ()
+/,\:        change the direction of motion if the value of the current register is non-zero
+
+                  .                     .
+                  .                     .
+                ../     /..     ..\     \..
+                        .         .
+                        .         .
+
 p:          print all registers (as ascii characters) from the register pointer until the first 0
 d:          print the value of the current register
 x:          exit
