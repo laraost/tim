@@ -1,0 +1,32 @@
+v       This program tests if the integers in the first and second register are equal.
+.       It prints 0 if a != b, 1 otherwise.
+.       Call the first register 'a' and the second register 'b'.
+.       First, it distinguishes two cases: a > 0 and a <= 0. In the latter case,
+.       a and b are negated, so a >= 0 afterwards.
+.       The remaining part of the program is the same for both cases:
+.         - while a > 0, a and b are decremented
+.         - after decrementing a, we test if b > 0 or b >= 0
+.            - if b > 0, then b != 0 and a != b
+.            - if b <= 0, b is negated. If b is still <= 0, then b = 0 and a = b.
+.                                       If b is > 0, then b != 0.
+.         - If b = 0, increment the a by 1, otherwise, a remains 0.
+.         - Print a and exit
+.
+.
+.
+.
+.
+.                          first register is now 0
+.   first register > 0     |            second register is <= 0  second register = 0 => true
+.   |                      |            |                        |
+.   v                      v            v                        v
+\........>..>.....\..............]...\.............!\...................[+v
+.        .  ^.[-]-<                  .              .                     .
+.        .                  false -> .              .                     .
+. <= 0   .                           .              .                     .
+.        .                           >..............>....................[>........dx
+!        .
+]        .
+!        .
+[        .
+>........^
