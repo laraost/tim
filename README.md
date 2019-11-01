@@ -43,5 +43,5 @@ It's written in Python 3. Run ```machine.py``` with the argument ```/path/to/inp
 
 We can chain multiple programs together, for example:
 ```
-echo "3 5" | ./multiply.py examples/multiply | ./multiply.py examples/loop
+echo "3 5" | ./machine.py examples/multiply | ./machine.py examples/loop
 ```
