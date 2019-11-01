@@ -6,7 +6,7 @@ Read a code-matrix from a file, start at the top left and interpret the symbols:
 +, -:       increment the current register
 .:          do nothing
 [,]:        move the register pointer left, right; wraps around if the pointer moves past the first or last register
-/,\:        change the direction of motion if the value of the current register is non-zero
+/,\:        change the direction of motion if the value of the current register is less than or equal to zero
 
                   .                     .
                   .                     .
@@ -87,7 +87,7 @@ while not done:
     # branch
     elif symbol in '/\\':
         if symbol == '/':
-            if registers[regptr] != 0:
+            if registers[regptr] <= 0:
                 if motion_dir == (0, 1):
                     new_dir = (-1, 0)
                 if motion_dir == (0, -1):
@@ -98,7 +98,7 @@ while not done:
                     new_dir = (0, 1)
                 motion_dir = new_dir
         elif symbol == '\\':
-            if registers[regptr] != 0:
+            if registers[regptr] <= 0:
                 if motion_dir == (0, 1):
                     new_dir = (1, 0)
                 if motion_dir == (0, -1):
