@@ -14,6 +14,8 @@ Read a code-matrix from a file, start at the top left and interpret the symbols:
                         .         .
                         .         .
 
+!:          flip the sign of the current register
+c:          clear the current register to 0
 p:          print all registers (as ascii characters) from the register pointer until the first 0
 d:          print the value of the current register
 x:          exit
@@ -87,7 +89,7 @@ while not done:
     # branch
     elif symbol in '/\\':
         if symbol == '/':
-            if registers[regptr] <= 0:
+            if registers[regptr] > 0:
                 if motion_dir == (0, 1):
                     new_dir = (-1, 0)
                 if motion_dir == (0, -1):
@@ -98,7 +100,7 @@ while not done:
                     new_dir = (0, 1)
                 motion_dir = new_dir
         elif symbol == '\\':
-            if registers[regptr] <= 0:
+            if registers[regptr] > 0:
                 if motion_dir == (0, 1):
                     new_dir = (1, 0)
                 if motion_dir == (0, -1):
@@ -108,6 +110,12 @@ while not done:
                 if motion_dir == (-1, 0):
                     new_dir = (0, -1)
                 motion_dir = new_dir
+    # flip sign
+    elif symbol == '!':
+        registers[regptr] = -registers[regptr]
+    # clear to zero
+    elif symbol == 'c':
+        registers[regptr] = 0
     # print (as ascii)
     elif symbol == 'p':
         output = ''
