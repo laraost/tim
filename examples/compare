@@ -12,7 +12,7 @@ v       This program tests if the integers in the first and second register are 
 .         - If b = 0, increment the a by 1, otherwise, a remains 0.
 .         - Print a and exit
 .
-.
+.       'smallcompare' is a smaller version of this program.
 .
 .
 .
