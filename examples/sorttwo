@@ -1,0 +1,86 @@
+v Sort two numbers.
+. This example illustrates the use of the tapes. The numbers are copied to tape 1 and compared on tape 1.
+. The input is not modified.
+.
+8 <---- Store the number of copies                                                                                     
+]                                                                                                                      
++                                                                                                                      
++                                                                                                                      
+[                                                                                                                      
+v................................]1]0.......<                                                                          
+0                                           .                                                                          
+\>......v                                   .                                                                          
+!.      .                                   .                                                                          
+8.      .>0                                 .                                                                          
+c.      .                                   .                                                                          
++.      >....\..>...9\.......8\.....v       .                                                                          
+0.      .    .  .    .        1     .       .                                                                          
+>^      .    -  .    -        !     .       [ <+- Reset regptr of 8th tape                                             
+        .    1  .    0        0     .       .  |    Reset regptrs of tape 0 and 1                                      
+^       .    +  .    +        !     .       .  v    v                                                                  
+|       .    9  ^....<        >8c...>.8]-.../c.[....0[1[...v                                                           
+|       0    +                                             .
+|       ^....<                                             .
+|                                                          . 
+Negate the input if its <= 0,              clear tape 8    .
+remember negation on tape 8                           |    .                                                       
+                                                      v    .                                                       
+v................................................c[c[c8....< <--- We've copied the input values on tape 0 to tape 1    
+.                                                                                                                      
+. <---- Now test if the second register holds a greater value than the first register                                  
+.                   Not negated                                                                                        
+1                   |       reg[0] <= 0 => true                                                                        
+]                   |       |                                                                                          
+.                   v       v               Clear tape 8 and print the result                                           
+\>.1.>......\....8\.1[...\...>...]]+..v     |   Reset tape 1
+..   .      -     .      .   .        .     |   | to prepare for swapping                               
+!.   .      [     1      .   .        .     v   v                                                       
+[.   .      -     [      >.......]]c..>.1\..8c.1c[c[c............v
+!+   .      ]     .      .   .           .                       .
+]c   ^......<     \..........^           .                       .
+.8                .      .               >........0d]dx          .
+>^                >......^                 ^                     .
+                                           |                     .
+                                           No swapping necessary .
+v................................................................<
+.
+8 <---- Store the number of copies                                        
+]                                                                         
++                                                                         
++                                                                         
+[                                                                         
+v.........................[[1]0.......<                             
+1                                     .                             
+]                                     .                             
+0                                     .                             
+\>......v                             .                             
+..      .                             .                             
+!.      .                             .                             
+8.      .>0                           .                             
+c.      .                             .                             
++.      >....\.........8\.....v       .                             
+0.      .    .          1     .       .                             
+>^      .    -          !     .       [ <+- Reset regptr of 8th tape
+        .    1          0     .       .  |    Reset regptr of tape 0                      
+^       .    +          !     .       .  v    v                      
+|       .    0          >8c...>.8]-.../c.[....0[......v
+|       ^....<                                        .
+|                                                     . <---- Now copy values from tape 1 to tape 0
+Negate the input if its <= 0,                         .
+remember negation on tape 8                           .
+                                                      .
+v.............................<...........[++]8.......<
+.                             .               ^
+.                             .               |
+.                             .               Store how many times to copy
+.                             ]
+1                             1
+.                             ]
+\>......v                     0
+!.      .                     .
+8.      >....\....8\...v      [ <+- Reset regptr of 8th tape
+c.      .    -     0   .      .  |    Reset regptr of tape 0
++.      .    0     !   .      .  v    v         Print and exit           
+1.      1    +     >8c.>.8]-../c.[....0[...v    |
+>^      ^....<                             .    v
+                                           >....d]dx
