@@ -5,7 +5,7 @@ v       This program tests if the integers in the first and second register are 
 .       a and b are negated, so a >= 0 afterwards.
 .       The remaining part of the program is the same for both cases:
 .         - while a > 0, a and b are decremented
-.         - after decrementing a, we test if b > 0 or b >= 0
+.         - after decrementing a, we test if b > 0 or b <= 0
 .            - if b > 0, then b != 0 and a != b
 .            - if b <= 0, b is negated. If b is still <= 0, then b = 0 and a = b.
 .                                       If b is > 0, then b != 0.
@@ -13,8 +13,6 @@ v       This program tests if the integers in the first and second register are 
 .         - Print a and exit
 .
 .       'smallcompare' is a smaller version of this program.
-.
-.
 .
 .                          first register is now 0
 .   first register > 0     |            second register is <= 0  second register = 0 => true
