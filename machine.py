@@ -2,11 +2,12 @@
 
 """
 Read a code-matrix from a file, start at the top left and interpret the symbols:
+0-9:        select the active tape. Each tape has its own register pointer. Tape 0 is active at the start (the 'input'-tape)
 <, >, v, ^: go left, right, down, up
 +, -:       increment the current register
 .:          do nothing
 [,]:        move the register pointer left, right; wraps around if the pointer moves past the first or last register
-/,\:        change the direction of motion if the value of the current register is less than or equal to zero
+/,\:        change the direction of motion if the value of the current register is greater than zero
 
                   .                     .
                   .                     .
@@ -46,7 +47,7 @@ if len(sys.argv) == 3:
 else:
     numberofregisters = 100
 
-registers = [[0]*numberofregisters]*numtapes
+registers = [[0]*numberofregisters for i in range(10)]
 
 # start on the 'input'-tape
 tape = 0
@@ -68,9 +69,13 @@ motion_dir = (0, 1)
 
 done = False
 while not done:
+    # print(row, col, registers[tape][regptr[tape]], tape, regptr[tape])
     symbol = matrix[row][col]
+    # select a tape
+    if symbol in '0123456789':
+        tape = int(symbol)
     # move left, right, down or up
-    if symbol in '<>v^':
+    elif symbol in '<>v^':
         if symbol == '<':
             motion_dir = (0, -1)
         elif symbol == '>':
