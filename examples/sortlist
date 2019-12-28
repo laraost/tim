@@ -1,4 +1,7 @@
 v Sort a list of numbers. The first number in the input is the number of elements to sort.
+. The second tape keeps counters for the outer loop (1st register) and the inner loop (2nd register).
+. The third tape keeps the number of elements for printing.
+. Tapes 1, 8 and 9 are used for swapping elements, as in the example 'sorttwo'
 .
 >...\.....x  <--- 0 or less elements to sort
 v...<0+3<
@@ -6,12 +9,12 @@ v...<0+3<
 .
 2 <--- Inner loop has N-1 iterations
 ]
--
-[
-.                         v.<
-0                         3 ]
-]                         - d
-.                         . 0
+-                   Print the result
+[                   |
+.                   |     v.<
+0                   |     3 ]
+]                   |     - d
+.                   v     . 0
 >...2...\......>.........3>./....x
         .      .
 >..............^
@@ -29,16 +32,16 @@ v...<0+3<
 .       [                                                                                                  .
 .       .                                                                                                  .
 .       .                                                                                                  .
-.       - <--- outer loop branch                                                                           .
+.       - <--- outer loop branches here                                                                    .
 .       \v                                                                                                 .
 ^.......<.                                                                                                 .
-        v<                                                                                                 .
-        2                                                                                                  .
-        ]            v.].< <------ Copy the third register to the second register, reset the regptr of     .
->..2....v            0   +     Go to the first register of tape 2                               tape 0     .
-.       \v           [   [     |                                                                           .
+        v<     inner loop branches here                                                                    .
+        2      |                                                                                           .
+        ]      |     v.].< <------ Copy the third register to the second register, reset the regptr of     .
+>..2....v      |     0   +     Go to the first register of tape 2                               tape 0     .
+.       \v <---+     [   [     |  use one iteration less in the inner loop next time                       .
 .       .-           2   -     v                                                                           .
-.       >.........2].>.../.....[[..........................................................................^
+.       >.........2].>.../.....[-[.........................................................................^
 .        .
 ] <------.------ Go to the next pair
 0        .
