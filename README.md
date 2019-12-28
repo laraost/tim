@@ -37,7 +37,7 @@ d-\x>
   >.^
 ```
 
-The initial values for the registers are read from standard input (or set to zero if none are provided).
+There are 10 "tapes". The initial values for the registers on tape 0 are read from standard input (or set to zero if none are provided).
 
 It's written in Python 3. Run ```machine.py``` with the argument ```/path/to/input/file``` to be amazed.
 
