@@ -23,6 +23,8 @@ x:          exit
 
 import sys
 
+numtapes = 10
+
 matrix = []
 
 if len(sys.argv) < 2:
@@ -44,16 +46,19 @@ if len(sys.argv) == 3:
 else:
     numberofregisters = 100
 
-registers = [0]*numberofregisters
+registers = [[0]*numberofregisters]*numtapes
 
-regptr = 0
+# start on the 'input'-tape
+tape = 0
+
+regptr = [0]*numtapes
 for line in sys.stdin:
     line = line.strip();
     for x in line.split(" "):
-        registers[regptr] = int(x)
-        regptr = regptr + 1    
+        registers[tape][regptr[tape]] = int(x)
+        regptr[tape] = regptr[tape] + 1    
 
-regptr = 0
+regptr[tape] = 0
 row = 0
 col = 0
 
@@ -77,19 +82,19 @@ while not done:
     # increment/decrement register
     elif symbol in '+-':
         if symbol == '+':
-            registers[regptr] = registers[regptr] + 1;
+            registers[tape][regptr[tape]] = registers[tape][regptr[tape]] + 1;
         elif symbol == '-':
-            registers[regptr] = registers[regptr] - 1;
+            registers[tape][regptr[tape]] = registers[tape][regptr[tape]] - 1;
     # move pointer
     elif symbol in '[]':
         if symbol == '[':
-            regptr = (regptr - 1) % len(registers)
+            regptr[tape] = (regptr[tape] - 1) % numberofregisters
         elif symbol == ']':
-            regptr = (regptr + 1) % len(registers)
+            regptr[tape] = (regptr[tape] + 1) % numberofregisters
     # branch
     elif symbol in '/\\':
         if symbol == '/':
-            if registers[regptr] > 0:
+            if registers[tape][regptr[tape]] > 0:
                 if motion_dir == (0, 1):
                     new_dir = (-1, 0)
                 if motion_dir == (0, -1):
@@ -100,7 +105,7 @@ while not done:
                     new_dir = (0, 1)
                 motion_dir = new_dir
         elif symbol == '\\':
-            if registers[regptr] > 0:
+            if registers[tape][regptr[tape]] > 0:
                 if motion_dir == (0, 1):
                     new_dir = (1, 0)
                 if motion_dir == (0, -1):
@@ -112,21 +117,21 @@ while not done:
                 motion_dir = new_dir
     # flip sign
     elif symbol == '!':
-        registers[regptr] = -registers[regptr]
+        registers[tape][regptr[tape]] = -registers[tape][regptr[tape]]
     # clear to zero
     elif symbol == 'c':
-        registers[regptr] = 0
+        registers[tape][regptr[tape]] = 0
     # print (as ascii)
     elif symbol == 'p':
         output = ''
-        for idx in range(regptr, len(registers)):
-            output = output + chr(registers[idx])
+        for idx in range(regptr[tape], numberofregisters):
+            output = output + chr(registers[tape][idx])
             idx = idx + 1
-            if registers[idx] == 0:
+            if registers[tape][idx] == 0:
                 break
         print(output)
     elif symbol == 'd':
-        print(repr(registers[regptr]))
+        print(repr(registers[tape][regptr[tape]]))
     # quit
     elif symbol == 'x':
         break
