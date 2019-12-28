@@ -68,7 +68,7 @@ v...<0+3<
 .        |       0    +                                             .
 .        |       ^....<                                             .
 .        |                                                          . 
-.        Negate the input if its <= 0,              clear tape 8    .
+.        Negate the input if it's <= 0,             clear tape 8    .
 .        remember negation on tape 8                           |    .                                                       
 .                                                              v    .                                                       
 .        v................................................c[c[c8....< <--- We've copied the input values on tape 0 to tape 1    
