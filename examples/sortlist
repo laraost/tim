@@ -112,7 +112,7 @@ v...<0+3<
 .        |       .    0          >8c...>.8]-.../c.[....0[......v
 .        |       ^....<                                        .
 .        |                                                     . <---- Now copy values from tape 1 to tape 0
-.        Negate the input if its <= 0,                         .
+.        Negate the input if it's <= 0,                        .
 .        remember negation on tape 8                           .
 .                                                              .
 .        v.............................<...........[++]8.......<
