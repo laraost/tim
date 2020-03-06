@@ -1,4 +1,4 @@
-# useless
+# tim
 
 This is a computing machine controlled by a 2-dimensional input language. Here's an example (```examples/multiply```):
 
